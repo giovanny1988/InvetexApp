@@ -1,0 +1,121 @@
+/*Importar la fuente Poppins desde google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Peralta&family=Poppins:wght@300&display=swap');
+
+/*Raiz del docoumento html donde creo las variables css que mas se usan*/
+:root{
+    --color_fondo: #fe330a;
+    --fuente_titulos : 'Poppins', sans-serif;
+}
+
+/*Estilo para que el body me incluta el valor de las emdidas dentro de torfos los elementos*/
+body{
+    box-sizing: border-box;
+}
+
+/*Propiedad flex para el elemento main que me manipula los elementos hijos de*/
+main{
+    display: flex;
+}
+
+/*Estilos para los contenedores de la imagen y el formulario*/
+.login__contenedor{
+    display: flex;
+    height: 100vh;
+    width: 50%;
+}
+
+/*Clase para poner fondo a un solo contenedor*/
+.login__fondo{
+    background-color: #113941;
+}
+
+/*Estilos para el contenedor que me guarda el logo*/
+.login__contenedor__logo{
+    height: auto;
+    margin: auto;
+    width: 80%;
+}
+
+
+/*Estilos para el contenedor del formulario de login*/
+.login__contenedor__formulario{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin: auto;
+    padding: auto;
+    width: 80%;
+}
+
+.form-control{
+    border-radius: 0;
+}
+.bi{
+    background-color:#e9e7e7;
+    color:#113941;
+    font-size: 1.4rem;
+    padding: 5px;
+}
+
+
+/*Espaciado entre el select del tipo de documento y el formulario de cc*/
+.form-select{
+    border-radius: 0;
+    width: 25%;
+    margin-right: 15px;
+    font-family: var(--fuente_titulos);
+    font-size: 12px;
+}
+.form-label{
+    color: #ffffff;
+    font-family: var(--fuente_titulos);
+}
+
+/*Estilos para el subtitulo del formulario*/
+.login__subtitulo{
+    color: #ffffff;
+    font-family: var(--fuente_titulos);
+    font-size: 40px;
+    text-align: center;
+}
+
+.btn{
+    background-color: #fe330a;
+    border: #fe330a;
+    font-family: var(--fuente_titulos);
+}
+
+/*Estilos para los vinculos hacia otros modulos*/
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/*Color de fondo para el vinculo que me redirecciona al login*/
+.registro__color__vinculo{
+    color: #fe330a;
+    font-family: var(--fuente_titulos);
+}
+/*Estilos para los vinculos*/
+.registro__parrafo{
+    font-family: var(--fuente_titulos);
+    color: #ffffff;
+}
+
+/*Estilos para la pseudo clase placehorlder*/
+::placeholder{
+    font-size: 15px;
+    font-family: var(--fuente_titulos);
+}
+
+
+
+@media screen and (max-width: 660px) {
+
+    .login__subtitulo{
+        font-size: 25px;
+    }
+
+
+    
+}

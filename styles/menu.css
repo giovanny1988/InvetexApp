@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Peralta&family=Poppins:wght@300&display=swap');
+
+/*Raiz del documento html donde creo las variables css que mas se usan*/
+:root{
+    --color_fondo: #fe330a;
+    --color_fondo2: #113941;
+    --fuente_titulos : 'Poppins', sans-serif;
+}
+
+/*Contenedor del header*/
+.container-fluid{
+    height: 7rem;
+}
+
+/*Estilos para el contenedor del logo*/
+.header__logo{
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    height: 6.5rem;
+
+}
+/*Para pruebas*/
+.px{
+    margin-top: 15px;
+}
+
+.p{
+    width: 20%;
+    height: 6.5rem;
+}
+
+/*Fondo para el contenedor del menú*/
+.menu__contenedor{
+    background-color: var(--color_fondo2);    
+}
+
+/*Color para las listas del menú*/
+.nav_titulos{
+    color: #ffffff;
+}
+
+/*Estilos para el boton de buscar*/
+.btn-outline-success{
+    background-color: var(--color_fondo);
+    color: #ffffff;
+    border: none;
+}
