@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Peralta&family=Poppins:wght@300&display=swap");
+
+/*Raiz del documento html donde creo las variables de los colores corporativos y la fuente del software*/
+:root {
+  --color_fondo: #fe330a;
+  --color_fondo2: #113941;
+  --fuente_titulos: "Poppins", sans-serif;
+  --color_fondo3:#817472;
+}
+
+body{
+  background-color:#CFD7D9;
+}
+
+/*Separando el navbar unos 40 pixlees de margen inferior*/
+.navbar {
+  margin-bottom: 40px;
+  /*background-color: #091c35;modo dark--------------------------------------------------------*/
+}
+/*Separando el contenedor del navbar unos 40 pixeles de margen inferior*/
+.container {
+  margin-bottom: 40px;
+}
+/*Estilos para el contenedor de las card y botones de navegación*/
+.column__menu {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--color_fondo2) 0px 3px 8px;
+}
+.contenedor{
+  margin-top: 6rem;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  height: auto;
+}
+.contenedor2{
+  margin-top: 4rem;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  height: auto;
+}
+/*Estilo sombreado para las cards de los botones de navegación*/
+.card {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+/*Esta clase amplia el tamaño de los iconos de las cards y su color*/
+.icon__button {
+  font-size: 100px;
+}
+
+/*Clase boostrap de los botones que aumenta el tamaño del boton y le aplica color de fondo y quita los bordes*/
+.btn {
+  width: 100%;
+  background-color: var(--color_fondo);
+  border: none;
+  font-weight: bold;
+}
+/*Modificación de la clase boostrap para el dropdown que le cambia el color de fondo*/
+.btn-secondary {
+  background-color: #113941;
+}
+
+/*Estilos del contenedor del footer*/
+.container__footer {
+  padding: 10px;
+  background-color: var(--color_fondo2);
+  height: auto;
+}
+
+/*Selector de enlaces que le quita su decoración*/
+a {
+  text-decoration: none;
+  color: var(--color_fondo2);
+  font-family: var(--fuente_titulos);
+}
+/*Linea ubicada en el footer con un cambio en su color*/
+hr {
+  border: 1px solid #ffffff;
+}
+h4{
+  color: var(--color_fondo2);
+}
+
+/*Estilos para el texto ubicado en el footer*/
+.text__footer {
+  color: #ffffff;
+}
+/*Colores para los iconos del menu de incio*/
+.bi-bookmark-star-fill{
+  color: var(--color_fondo);
+  font-size: 40px;
+}
+
+.bi-activity{
+  color: var(--color_fondo);
+  font-size: 40px;
+}
+.bi-people-fill{
+  color: cornflowerblue;
+}
+.bi-person-badge{
+  color: var(--color_fondo2);
+}
+
+.bi-box-arrow-in-right{
+  color:#18acb6
+}
+.bi-box-seam-fill{
+  color: #2da2e1;
+}
+
+.bi-box-arrow-in-left{
+  color: #886cc4;
+}
+.bi-truck{
+  color: #f1a81a;
+}
+.bi-person-rolodex{
+  color: #51883c;
+}
+
+.bi-tags-fill{
+  color: #0e4964;
+}
+
+.bi-card-checklist{
+  
+  color: #5c166d;
+}
+
+.btn-success:hover{
+  background-color: var(--color_fondo3);
+}
+
+/*Este codigo me quita las flechas de los campos input numéricos*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
+/*Media querie responsiva para separar una margen inferior las columnas del menu de navegacion */
+@media screen and (max-width: 768px) {
+  .column__menu {
+    margin-bottom: 30px;
+  }
+}

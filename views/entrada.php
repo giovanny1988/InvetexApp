@@ -1,0 +1,179 @@
+<?php
+session_start();
+if(empty($_SESSION['id'])){
+    header("location: ../index.php");
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/menu.css" />
+    <link rel="stylesheet" href="../css/table.css" />
+    <link rel="shortcut icon" href="../img/logo2.ico" type="image/x-icon" />
+    <title>Entrada insumos</title>
+  </head>
+  <body>
+      <?php
+        include("../db/conexion.php");
+      ?>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            ><img src="../img/logo.PNG" width="200" alt="Logo Invetex"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo02"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="menu.php">Inicio</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <div class="dropdown">
+                <a
+                  class="btn btn-secondary dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="bi bi-person-circle" style="font-size: 20px"></i>
+                    <?php echo $_SESSION['emailUser']; ?>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="../db/controlador_cerrar.php">Cerrar sesión</a>
+                  </li>
+                </ul>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <section class="container">
+        <div class="row justify-content-between">
+          <div class="column__menu col-md-3">
+            <h5>Registrar entrada</h5>
+            <br />
+            <form method="post">
+                <?php
+                  include("../controlador/crear_entrada.php");
+                ?>
+                <div class="mb-2">
+                  <label for="fechaEntrada" class="form-label"
+                    >Fecha entrada</label
+                  >
+                  <input type="date" class="form-control" name="fechaEntrada" autofocus />
+                </div>
+                <div class="mb-2">
+                  <label for="valorEnt" class="form-label"
+                    >Valor entrada</label
+                  >
+                  <input type="number" class="form-control" name="valorEnt" />
+                </div>
+                <div class="mb-2">
+                  <label for="cantIn" class="form-label"
+                    >Cantidad entrada</label
+                  >
+                  <input type="number" class="form-control" name="cantIn" />
+                </div>
+                <div class="mb-3">
+                  <label for="descuentoIn" class="form-label"
+                    >Descuento</label
+                  >
+                  <input type="number" class="form-control" name="descuentoIn" />
+                </div>
+                <div class="mb-3">
+                  <select class="form-select" name="selIns">
+                    <option value="">Insumo a Ingresar</option>
+                    <?php
+                        include("../controlador/listar_insumos.php");
+                        while($datos=mysqli_fetch_array($query))
+                        { 
+                    ?> 
+                          <option value="<?php echo $datos['Id_insumo']?>" ><?php echo $datos['nombre_insumo']?></option>                   
+                        <?php }    
+                        ?>  
+                  </select>            
+                </div>    
+                <input type="submit" class="btn btn-success" name="btnregistrar" value="Registrar" ></input>
+            </form>
+          </div>
+          <div class="column__menu column__menu2 col-md-8">
+            <form class="d-flex" method="post">
+              <input
+                class="form-control me-2" name="txtbuscar"
+                type="search"
+                placeholder="&#128270;Buscar por insumo"
+              />
+              <input class="btn btn-success" type="submit" value="buscar"></input>
+            </form>
+            <div class="table-responsive">
+              <table id="tabla" class="table table-striped">
+                <thead style="background-color: #113941; color: #ffffff">
+                  <tr>
+                    <th>IDE</th>
+                    <th>Fecha entrada</th>
+                    <th>Valor entrada</th>
+                    <th>Cantidad entrada</th>
+                    <th>Descuento</th>
+                    <th>Insumo</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <?php
+                    include("../controlador/listar_entrada.php");
+                    while($datos=mysqli_fetch_array($query)){ ?> 
+                      <tr>
+                        <td><?= $datos['idEntrada_insumo'] ?></td>
+                        <td><?= $datos['fecha_entrada'] ?></td>
+                        <td><?= $datos['valor_entrada'] ?></td>
+                        <td><?= $datos['cantidad_entrada'] ?></td>
+                        <td><?= $datos['descuento_entrada'] ?></td>
+                        <td><?= $datos['nombre_insumo'] ?></td>
+                        <td>
+                          <div class="btn-group btn-group-sm" role="group">
+                             <a href="../controlador/actualizar_cliente.php?idEntrada_insumo=<?=$datos['idEntrada_insumo'] ?>"><button type="button" style="background-color:#e69b00;border:none; padding:5px;"><i class="bi bi-pencil-square" style="color: #000000;"></i></button></a>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php }    
+                  ?>  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Pie de pagina-->
+      <footer class="container__footer container-fluid text-center">
+        <img src="../img/logo3.png" width="100" alt="Logo Invetex" />
+        <hr />
+        <p class="text__footer">Invetex &copy;Todos los derechos reservados</p>
+        <p class="text__footer">2023</p>
+      </footer>
+  </body>
+</html>
